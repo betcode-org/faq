@@ -1,0 +1,17 @@
+site_name: Betcode FAQ
+site_description: FAQ for betcode open-source packages and sports trading generally
+
+theme:
+  name: 'mkdocs'
+
+nav:
+  - Getting Started: getting-started.md
+  - Using Data: using-data.md
+  - Creating Strategies: developing-and-testing-strategies.md
+  - Deploying: deploying-strategies.md
+
+extra_css:
+  - styles/extra.css
+
+markdown_extensions:
+  - md_in_html
