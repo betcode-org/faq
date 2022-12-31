@@ -2,7 +2,10 @@ site_name: Betcode FAQ
 site_description: FAQ for betcode open-source packages and sports trading generally
 
 theme:
-  name: 'mkdocs'
+  name: material
+  palette:
+    primary: green
+  highlightjs: true
 
 nav:
   - Getting Started: getting-started.md
@@ -14,4 +17,4 @@ extra_css:
   - styles/extra.css
 
 markdown_extensions:
-  - md_in_html
+  - pymdownx.details

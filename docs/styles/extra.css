@@ -2,48 +2,5 @@
 
 .logo {
     max-height: 42px;
-}
-
-/* FAQ Entries */
-
-summary {
-    margin-bottom: 1rem;
-}
-
-details {
-    margin-bottom: 0.5rem;
-    padding: 0;
-}
-
-details[open] {
-    background-color: #eee;
-    padding: 0.5rem;
-    padding-top: 0;
-
-}
-
-p {
-    margin-bottom: 0.5rem;
-}
-
-/* Homepage */
-
-body.homepage div.jumbotron {
-    margin-top: 1.5rem;
-    padding-top: 1rem;
-    padding-bottom: 0;
-}
-
-body.homepage div.jumbotron div.card {
-    margin-bottom: 2rem;
-}
-
-body.homepage>div.container>div.row>div.col-md-3 {
-    display: none;
-}
-
-body.homepage>div.container>div.row>div.col-md-9 {
-    margin-left: 0;
-    flex: 0 0 100%;
-    max-width: 100%;
+    margin-bottom: -10px;
 }
