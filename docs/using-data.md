@@ -13,11 +13,11 @@
 ??? question "How do I match runner names to runner IDs?"
     Betfair market books allow you to see the prices ladder for each runner ID (selection_id) but not the name. The names for each runner can be found in the market catalogue.
 
-    When runnning a live strategy, Flumine will automatically inject the market catalogue into your data, but when backtesting it's only available if you recorded it at the time. If so, you can inject it into your testing results using <a href="https://github.com/betcode-org/flumine/blob/master/examples/middleware/marketcatalogue.py">this middleware</a>.
+    When running a live strategy, Flumine will automatically inject the market catalogue into your data, but when backtesting it's only available if you recorded it at the time. If so, you can inject it into your testing results using <a href="https://github.com/betcode-org/flumine/blob/master/examples/middleware/marketcatalogue.py">this middleware</a>.
 
 ??? question "How can I get the last traded price before a match starts without recording the whole market?"
-    A rough and ready way would be to use Betfairlightweight to place an API call at the scheduled market time and us the last traded price at that point.
-    However, if you're streaming data in Flumine, there's very little overhead to storing last traded prices in the strategy's "context" dictionary and overwriting each time they change with a market update while the market until the goes "inplay". This would be the recommended approach in most situations.
+    A rough and ready way would be to use Betfairlightweight to place an API call at the scheduled market time and use the last traded price at that point.
+    However, if you're streaming market data in Flumine, there's very little overhead to storing last traded prices in the strategy's "context" dictionary and overwriting them each time they market update changes them until the market goes "inplay". This would be the recommended approach in most situations.
 
 ??? question "The market start times don’t seem to match when events actually start in my country. Why is this?"
     Betfair datetimes are always for UTC timezone. You will need to translate them to your local timezone.
@@ -25,14 +25,14 @@
 ??? question "How do I get the trap number for greyhounds in Betfair?"
     The trap number is always the first character (and very, very rarely, first two characters) of the runner name. So if ```Droopys Child``` is running in trap 3, the selection name in the market catalogue will be ```3. Droopys Child```. If that dog is a non-runner, then for UK greyhounds it might be replaced by ```3. Flopsy Bunny (res)```. for Australian greyhounds the replacement might be ```9. Flopsy Bunny```, with sort priority 3.
 
-??? question "I see that I can download or buy historic data from Betfair. Is it worth it?"
-    Betfair historic data comes in three flavours: basic, advanced and pro. The [specification for each package is available here](https://historicdata.betfair.com/Betfair-Historical-Data-Feed-Specification.pdf). Basic data is free but generally of little value as it contains the last traded price at minute intervals and little else. Advanced offers data on best prices and volumes, but with a 1 second frequency only. Pro data is intended to provide the same content and granularity as if you were streaming it yourself.
+??? question "I see that I can download or buy historical data from Betfair. Is it worth it?"
+    Betfair historical data comes in three flavours: basic, advanced and pro. The [specification for each package is available here](https://historicdata.betfair.com/Betfair-Historical-Data-Feed-Specification.pdf). Basic data is free but generally of little value as it contains the last traded price at minute intervals and little else. Advanced offers data on best prices and volumes, but with a 1 second frequency only. Pro data is intended to provide the same content and granularity as if you were streaming it yourself.
 
-    The channel's most common recommendation is to stream and collect it yourself. If you have time cnstraints or deep pockets, the most common  recommendation is not to both with Advanced data and use only the Pro version to most closely replicate what you will encounter with your live strategies.
+    The channel's most common recommendation is to stream and collect it yourself. If you have time constraints or deep pockets, the most common  recommendation is not use only the Pro version unless and exceptionally your intended strategy will be specifically geared to the lower frequency of the Advanced data.
 
-    If you are considering purchasing data, checkout what [free advanced and pro data](https://historicdata.betfair.com/#/home) Betfair might have available from time-to-time</a>.
+    If you are considering purchasing data, do checkout what [free advanced and pro data](https://historicdata.betfair.com/#/home) Betfair might have available from time-to-time</a>.
 
-??? question "Where can I get historic Betfair starting prices?"
+??? question "Where can I get historical Betfair starting prices?"
     Historic BSPs are only available for horse and greyhound racing and can be found [here](https://promo.betfair.com/betfairsp/prices), though the data is sometimes incomplete.
 
 ## Third Party Data
@@ -44,4 +44,4 @@
     There's no easy answer to this. Many people build and maintain mappings between the data provided by different providers.
 
     These mappings may be created manually or programmatically by using a combination of event matching and fuzzy text matching. So for example, by matching all soccer teams in the same league, or all the horses in the same race, you will usually be left with only a very small number that don't match easily.
-    Althouh not a direct answer to your question, you may also find these [Betfair mappings](https://github.com/mberk/betfairmappings) helpful.
+    Although not a direct answer to your question, you may also find these [Betfair mappings](https://github.com/mberk/betfairmappings) helpful.

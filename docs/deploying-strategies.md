@@ -1,10 +1,10 @@
 # Deploying Strategies
 
 ## New Strategies
-??? question "I’m trying a new strategy. What should I do to protect myself in case it goes horribly wrong?"
-    Before runnig a new strategy live, it is recommended that you paper trade for a short period. Assuming you've backtested properly, it should work with similar results. However, it's a good way to uncover any environmental differences.
+??? question "I’m about to run a new strategy live. What should I do to protect myself in case it goes horribly wrong?"
+    Before running a new strategy live, it is recommended that you paper trade for a short period. Assuming you've backtested properly, it should work with similar results. However, it's a good way to uncover any environmental differences.
 
-    When you're ready to trade with real money, you may want to protect yourself by limiting the amount of funds in your account. One way to do this without actually withdrawing funds from Betfair, is to temporarily transfer any surplus from the account's "Main Wallet" to the "Exchange Games Wallet" where it can be parked until you are cofident that the strategy won't run rampant.
+    When you're ready to trade with real money, you may want to protect yourself by limiting the amount of funds in your account. One way to do this without actually withdrawing funds from Betfair, is to temporarily transfer any surplus from the account's "Main Wallet" to the "Exchange Games Wallet" where it can be parked until you are confident that the strategy won't run rampant.
 
 ??? question "Is there a way to force my strategy to process market books periodically, even when there’s no update within that period?"
     There is. You can set the streaming_timeout parameter for your strategy and it will force an update after the specified number of seconds.
@@ -19,7 +19,7 @@
     Exceptions to this would be where the strategies are in different sports, or would result in subscribing to more markets that your Betfair limit per subscription.
 
 ??? question "Has anyone tried streaming using AWS or any other serverless? And any recommendations on the same?"
-    Don't do it. Serverless is priced per invokation of the code and you'll have a huge number of them. It's straightforward and much more cost effective to spin up a dedicated EC2 instance and run your code on there
+    Don't do it. Serverless is priced per invocation of the code and you'll have a huge number of them. It's straightforward and much more cost effective to spin up a dedicated EC2 instance and run your code on there
 
 ## Problems
 ??? question "I’m getting lots of log messages about latency. What do they mean and what should I do?"

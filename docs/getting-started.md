@@ -15,9 +15,9 @@
 ## Technical Terms
 
 ??? question "What is "Streaming"?"
-    If you want to know the current prices for an event at Betfair, you could post an API request for that information and receive back a response with that information. However, it would be out-of-date almost as soon as you receive it. So you could end up making huge numers of requests just to stay current.
+    If you want to know the current prices for an event at Betfair, you could post an API request for that information and receive back a response with that information. However, it would be out-of-date almost as soon as you receive it. So you could end up making huge numbers of requests just to stay current.
 
-    This "polling" apporach creates processing load for you and for Betfair's servers, so Betfair offers a much more efficient alternative, called streaming. When streming, you first tell Betfair what types of markets you wish to follow (known as subscribing), they will send you the current state of each of those markets and then whenever there is a price change they'll automatically send ("push") an update to your data stream.
+    This "polling" approach creates processing load for you and for Betfair's servers, so Betfair offers a much more efficient alternative, called streaming. When streaming, you first tell Betfair what types of markets you wish to follow (known as subscribing), they will send you the current state of each of those markets and then whenever there is a price change they'll automatically send ("push") an update to your data stream.
 
     As Betfair only normally sends changes, there is a lot less data needing to be sent. better still, as new markets are opened matching your original subscription, Betfair will automatically start to include these too in the data that it sends you.
 
@@ -33,7 +33,7 @@
 
     As in both cases no bets are actually placed, we have to work out what the results would have been. Flumine can do this for us by simulating the market and assessing whether the bet would have been matched and then evaluating the resulting profit (or loss) when the market closed. So backtesting and peper trading through Flumine are both examples of simulations.
 
-    It is importat to note that the Fumine simulation engine has some real-world limitations. It can't anticipate the effect that placing bets will have on the market itself. So for example, placing a very large bet in real-life will often change how other bettors act, e.g. change prices, in ways that the simulator can't anticipate. 
+    It is important to note that the Flumine simulation engine has some real-world limitations. It can't anticipate the effect that placing bets will have on the market itself. So for example, placing a very large bet in real-life will often change how other bettors act, e.g. change prices, in ways that the simulator can't anticipate. 
 
 ## Services
 
