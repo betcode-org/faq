@@ -3,6 +3,8 @@ site_description: FAQ for betcode open-source packages and sports trading genera
 
 theme:
   name: material
+  logo: img/logo.png
+  favicon: img/logo.png
   palette:
     primary: green
   highlightjs: true
