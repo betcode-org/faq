@@ -23,4 +23,10 @@
 
 ## Problems
 ??? question "I’m getting lots of log messages about latency. What do they mean and what should I do?"
-    This means that there is a significant delay between the timestamp that Betfair is putting on your market updates and the point when you are processing them. Often this will be because your processing is too slow and isn't completing before the next update comes in. This is likely to be the case if the latency duration is climbing. In the case you will need to profile your code to identify and deal with the processing bottleneck.
+    When a Flumine strategy receives a market book update, it compares the updates timestamp to the clock where you are processing it. If there's a significant difference, usually a delay, it logs a warning message,
+    
+    There are several possible causes:
+    
+    * Your clock may be out of sync with real-time. We recommend that you ensure that it is regularly synchronised to an atomic clock to avoid this issue.
+    * There may be a network delay such as a traffic spike at your ISP, or a family member streaming a Netflix movie, causing a slowing down the rate at which updates are getting to you - these are usually temporary and typically clear themselves.
+    * Sometimes it will be because your processing of each update is too complex or inefficient and isn't completing before the next one arrives. This is likely to be the case if the latency duration is climbing. In which case you will need to [profile](https://docs.python.org/3/library/profile.html) your code to identify and deal with the processing bottleneck.
