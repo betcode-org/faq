@@ -13,11 +13,11 @@
 ??? question "How do I match runner names to runner IDs?"
     Betfair market books allow you to see the prices ladder for each runner ID (selection_id) but not the name. The names for each runner can be found in the market catalogue.
 
-    When running a live strategy, Flumine will automatically inject the market catalogue into your data, but when backtesting it's only available if you recorded it at the time. If so, you can inject it into your testing results using <a href="https://github.com/betcode-org/flumine/blob/master/examples/middleware/marketcatalogue.py">this middleware</a>.
+    When running a live strategy, Flumine will automatically inject the market catalogue into your data in `market.market_catalogue`, but when backtesting it's only available if you recorded it at the time. If so, you can inject it into your testing results using <a href="https://github.com/betcode-org/flumine/blob/master/examples/middleware/marketcatalogue.py">this middleware</a>.
 
 ??? question "How can I get the last traded price before a match starts without recording the whole market?"
     A rough and ready way would be to use Betfairlightweight to place an API call at the scheduled market time and use the last traded price at that point.
-    However, if you're streaming market data in Flumine, there's very little overhead to storing last traded prices in the strategy's "context" dictionary and overwriting them each time they market update changes them until the market goes "inplay". This would be the recommended approach in most situations.
+    However, if you're streaming market data in Flumine, there's very little overhead to storing last traded prices in the strategy's "context" dictionary `strategy.context` and overwriting them each time they market update changes them until the market goes "inplay". This would be the recommended approach in most situations.
 
 ??? question "The market start times don’t seem to match when events actually start in my country. Why is this?"
     Betfair datetimes are always for UTC timezone. You will need to translate them to your local timezone.

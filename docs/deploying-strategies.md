@@ -2,7 +2,7 @@
 
 ## New Strategies
 ??? question "I’m about to run a new strategy live. What should I do to protect myself in case it goes horribly wrong?"
-    Before running a new strategy live, it is recommended that you paper trade for a short period. Assuming you've backtested properly, it should work with similar results. However, it's a good way to uncover any environmental differences.
+    Before running a new strategy live, it is recommended that you paper trade for a short period. Assuming you have backtested properly, it should work with similar results. However, it's a good way to uncover any environmental differences.
 
     When you're ready to trade with real money, you may want to protect yourself by limiting the amount of funds in your account. One way to do this without actually withdrawing funds from Betfair, is to temporarily transfer any surplus from the account's "Main Wallet" to the "Exchange Games Wallet" where it can be parked until you are confident that the strategy won't run rampant.
 

@@ -6,7 +6,7 @@ Frequently Asked Questions for the betcode open-source betting software and comm
 
 ---
 
-The growing and vibrant betcode ecosystem offers tools and community support for developers and ports traders who want to automate their betting strategies. Our [github repositories](https://github.com/betcode-org) offer open-source tools for consuming the APIs at the Betfair and BetConnect trading platforms, and the Flummine trading framework that greatly simplifies the running of trading stratgies.
+The growing and vibrant betcode ecosystem offers tools and community support for developers and ports traders who want to automate their betting strategies. Our [github repositories](https://github.com/betcode-org) offer open-source tools for consuming the APIs at the Betfair and BetConnect trading platforms, and the Flumine trading framework that greatly simplifies the running of trading strategies.
 
 Support for using these tools and strategy development in general is available from experienced (and profitable) traders on our [Slack channel](https://join.slack.com/t/betcode-org/shared_invite/zt-h0ato238-PPbfU_T7Ji0ORjz0ESIJkg).
 
