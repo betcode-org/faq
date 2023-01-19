@@ -1,0 +1,32 @@
+name: deploy
+
+on:
+  push:
+    branches: ["master"]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: deploy
+    if: github.ref == 'refs/heads/master'
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up Python 3.7
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.7
+
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt
+
+    - name: Build docs
+      run: |
+        mkdocs build
+
+    - name: Publish
+      run: |
+        mkdocs gh-deploy --force
