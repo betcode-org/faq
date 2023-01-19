@@ -1,6 +1,14 @@
-# Betcode FAQ
+<p align="center">
+  <a href="https://github.com/betcode-org">
+    <img src="docs/img/logo-full.png" title="betcode-org">
+  </a>
+</p>
+
+# betcode FAQ
 
 This is FAQ draws from and supplements the discussions that take place in the Betcode Slack channel.
+
+[github pages](https://betcode-org.github.io/faq/)
 
 It is designed to be used with the Material for MkDocs documentation site generation tool, which Python users can install locally with ```pip install mkdocs-material```. Once installed, browse to folder where this repository has been closed and initiate an mkdocs server ```python -m mkdocs serve```. It will provide a localhost port number where the site may be viewed in a browser.
 

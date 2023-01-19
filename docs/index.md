@@ -1,4 +1,6 @@
-<h1><img src="/img/logo.png" alt="betcode logo" class="img-thumbnail logo"> betcode</h1>
+<p align="center">
+    <img src="img/logo-full.png" alt="betcode logo">
+</p>
 
 Frequently Asked Questions for the betcode open-source betting software and community.
 
