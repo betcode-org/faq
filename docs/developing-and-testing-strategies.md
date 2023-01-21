@@ -7,6 +7,21 @@
 
     There's a good reason for this. Many of the channel's members make their living from betting in sports markets. But those markets are very dynamic and are constantly evolving. So when a strategy becomes public, markets evolve to remove the inefficiency that made it profitable. So the strategy that you're given would very probably no longer be profitable by the time you've implemented it and the person who gave it to you would have lost some of their income.
 
+??? question "Can you recommend a good book to help me deepen my understading of betting markets"
+    There are an awful lot of truly terrible books out there. Generally if they include "win money daily", "bet profitabily" or similar in the title - stay well away.
+
+    However there are also some very useful and interesting books. Though some are quite expensive, the following have been recommended by active bettors on our Slack channel:
+
+    * [The Logic of Sports Betting](https://www.amazon.co.uk/Logic-Sports-Betting-Ed-Miller/dp/1096805723)
+    * [Trading Bases](https://www.amazon.co.uk/Trading-Bases-Fortune-Betting-Baseball/dp/0451415175)
+    * [Statistical Sports Models in Excel](https://www.amazon.co.uk/Statistical-Sports-Models-Excel-Andrew/dp/1079013458)
+    * [Precision: Statistical and Mathematical Methods in Horse Racing](https://www.amazon.co.uk/Precision-Statistical-Mathematical-Methods-Racing/dp/1432768522)
+    * [Efficiency of Racetrack Betting Markets](https://www.amazon.co.uk/Efficiency-Racetrack-Scientific-Financial-Economics/dp/981320351X)
+    * [The Kelly Capital Growth Investment Criterion: Theory and Practice](https://www.amazon.co.uk/Kelly-Capital-Growth-Investment-Criterion/dp/9814383139)
+    * [A Man for All Markets: Beating the Odds, from Las Vegas to Wall Street](https://www.amazon.co.uk/Man-All-Markets-Beating-Street/dp/1786071975)
+    * [Soccernomics](https://www.amazon.co.uk/Soccernomics-France-Germany-England-Starting/dp/0008559627)
+    * [The Signal and the Noise: The Art and Science of Prediction](https://www.amazon.co.uk/Signal-Noise-Art-Science-Prediction/dp/0141975652)
+
 ??? question "I’ve been trading manually for a while and want to automate my strategies. How do I start?"
     You will want to take advantage of the Flumine trading framework. For an easy to understand introduction to how strategies are structured in Flumine, take a look at the [lowest layer strategy](https://github.com/betcode-org/flumine/blob/master/examples/strategies/lowestlayer.py) in the flumine examples folder.
 
@@ -28,6 +43,22 @@
     So if you want to change or extend the market information, for example by calculating a technical indicator from the updated market data, then you would probably want to use middelware. However, if you were periodically making calls to an external API, to obtain match statistics for example, you would most likely want to do this in parallel to your strategy execution and so would use a worker.
 
     One exception would be when backtesting. The simulator works by patching the system clock to the time the event was taking place, as it's rather difficult to keep patched times in sync on different processors, workers don't play nicely with backtesting and you will need to use middleware to achieve accurate results.
+
+??? question "Where can I find a list of all possible Betfair market types for my favourite sport?"
+    Sadly there's no foolproof way to do this. Different events of the same type will typically have a core set of markets, but popular events may have others added if Betfair believes that there will be sufficient interest amongst bettors. Some of these additional markets may be quite specific and appear infrequently.
+
+    To get an idea of the specific market types available currently for, say, Ice Hockey, you could run a small script like this:
+
+    ``` python
+    results = trading.betting.list_market_catalogue(
+        filter=betfairlightweight.filters.market_filter(
+            event_type_ids=["7524"],  # ice hockey
+        ),
+        market_projection=["MARKET_DESCRIPTION"],
+        max_results=200,
+    )    
+    print({result.description.market_type for result in results})
+    ```
 
 ## Testing Strategies
 
