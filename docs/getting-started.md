@@ -10,7 +10,7 @@
 ??? question "How do Flumine Strategies work?"
     There's a [technical overview](https://betcode-org.github.io/flumine/architecture/) of the structure in the documentation, but if you are looking for a more accessible entry point, take a look at the [lowest layer example](https://github.com/betcode-org/flumine/blob/master/examples/strategies/lowestlayer.py) in the code's examples folder.
 
-    That example shows how, with only a few lines of code, you can filter the sports markets in which you want to trade, calculate condiions and place orders when they're met and then monitor orders and remove the ones that aren't matched.
+    That example shows how, with only a few lines of code, you can filter the sports markets in which you want to trade, calculate conditions and place orders when they're met and then monitor orders and remove the ones that aren't matched.
 
 ## Technical Terms
 
