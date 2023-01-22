@@ -60,6 +60,12 @@
     print({result.description.market_type for result in results})
     ```
 
+??? question "How does Flumine handle abandoned events?"
+    This isn't something that Flumine handles explicitly. Rather it deals with the updates received from Betfair in exactly the same way as it would when the same updates information are received in a normal race. So the question shifts to what updates does Betfair provide for an abandoned race?
+    The answer is that it first suspends the affected markets, and sets all the available ladder volumes to zero, Then it removes all the runners and closes the markets. There's no explicit "abandoned" status or reason given for closing each market.
+
+    It will also cancel all the orders on the affected markets, which Flumine will detect in the order stream if you have that running (i.e. haven't overriden the default).
+
 ## Testing Strategies
 
 ??? question "How do I know if my strategy will be successful?"
