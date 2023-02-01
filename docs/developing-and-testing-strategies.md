@@ -66,6 +66,11 @@
 
     It will also cancel all the orders on the affected markets, which Flumine will detect in the order stream if you have that running (i.e. haven't overriden the default).
 
+??? question "Why does the get_runner_context function require the runner handicap when it's always zero?"
+    The get_runner_context function needs three parameters to ensure that it returns a unique context: market_id, selection_id and handicap. The handicap is not the same as the weight handicap in a horse race or distance handicap in a greyhound race. rather it is the articial handicap added to asian handicap markets (e.g. Man United to win by more than one goal). So although it is zero for most market types, for asian handicaps we need to combibe the selection_id and handicap to identify a unique outcome.
+
+    Simialarly there are other market types for which we can't rely on selection_id and (zero) handicap to uniquely identify the outcome. For example, draws in all soccer have the same selection_id, so we need to add the market_id to uniquely identify the specific outcome for which we want the runner context.
+
 ## Testing Strategies
 
 ??? question "How do I know if my strategy will be successful?"
