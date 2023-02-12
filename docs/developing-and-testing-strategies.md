@@ -1,6 +1,6 @@
 # Developing and Testing Strategies
 
-## Developing Strategies
+## Finding Strategies
 
 ??? question "What would be a profitable strategy for horse racing?"
     We will answer almost anything else about how to automate your betting, find strategies, and assess their profit potential. But we won't give you profitable strategies.
@@ -22,9 +22,6 @@
     * [Soccernomics](https://www.amazon.co.uk/Soccernomics-France-Germany-England-Starting/dp/0008559627)
     * [The Signal and the Noise: The Art and Science of Prediction](https://www.amazon.co.uk/Signal-Noise-Art-Science-Prediction/dp/0141975652)
 
-??? question "I’ve been trading manually for a while and want to automate my strategies. How do I start?"
-    You will want to take advantage of the Flumine trading framework. For an easy to understand introduction to how strategies are structured in Flumine, take a look at the [lowest layer strategy](https://github.com/betcode-org/flumine/blob/master/examples/strategies/lowestlayer.py) in the flumine examples folder.
-
 ??? question "What’s the difference between technical indicators and fundamentals and what do people here use?"
     Technical indicators are extracted from what's happening in a betting market, such as prices, trading volumes matched per runner, amounts available to back or lay, when liquidity arrives in the market, etc. fundamentals ignore what's happening in the market and focus on real world data - how well has that horse been running recently? what's that teams form like? which dog runs best when it's raining? and so on ...
 
@@ -36,13 +33,6 @@
     Opinions here are mixed. There are members who run successful strategies with just a few "if" statements. On the other hand we have huge amounts of data available to us and for some that's a natural opportunity to use ML approaches leading to AI models.
 
     If the latter appeals to you, go for it, but with care. Sports data is very noisy and it's incredibly easy to mine opportunities that aren't real, so ensure that you know how to avoid overfitting your models and properly evaluating their accuracy.
-
-??? question "When should I use middleware or a worker?"
-    Middleware is run each time there's a market update immediately before that update is delivered to your strategy, so it is extra processing that will add to your strategy's execution time. Workers run on a different thread at a frequency that you set when you initiate them, so should have minimal, if any, impact on your strategy's execution.
-
-    So if you want to change or extend the market information, for example by calculating a technical indicator from the updated market data, then you would probably want to use middelware. However, if you were periodically making calls to an external API, to obtain match statistics for example, you would most likely want to do this in parallel to your strategy execution and so would use a worker.
-
-    One exception would be when backtesting. The simulator works by patching the system clock to the time the event was taking place, as it's rather difficult to keep patched times in sync on different processors, workers don't play nicely with backtesting and you will need to use middleware to achieve accurate results.
 
 ??? question "Where can I find a list of all possible Betfair market types for my favourite sport?"
     Sadly there's no foolproof way to do this. Different events of the same type will typically have a core set of markets, but popular events may have others added if Betfair believes that there will be sufficient interest amongst bettors. Some of these additional markets may be quite specific and appear infrequently.
@@ -59,6 +49,18 @@
     )
     print({result.description.market_type for result in results})
     ```
+
+## Implementing Strategies
+
+??? question "I’ve been trading manually for a while and want to automate my strategies. How do I start?"
+    You will want to take advantage of the Flumine trading framework. For an easy to understand introduction to how strategies are structured in Flumine, take a look at the [lowest layer strategy](https://github.com/betcode-org/flumine/blob/master/examples/strategies/lowestlayer.py) in the flumine examples folder.
+
+??? question "When should I use middleware or a worker?"
+    Middleware is run each time there's a market update immediately before that update is delivered to your strategy, so it is extra processing that will add to your strategy's execution time. Workers run on a different thread at a frequency that you set when you initiate them, so should have minimal, if any, impact on your strategy's execution.
+
+    So if you want to change or extend the market information, for example by calculating a technical indicator from the updated market data, then you would probably want to use middelware. However, if you were periodically making calls to an external API, to obtain match statistics for example, you would most likely want to do this in parallel to your strategy execution and so would use a worker.
+
+    One exception would be when backtesting. The simulator works by patching the system clock to the time the event was taking place, as it's rather difficult to keep patched times in sync on different processors, workers don't play nicely with backtesting and you will need to use middleware to achieve accurate results.
 
 ??? question "How does Flumine handle abandoned events?"
     This isn't something that Flumine handles explicitly. Rather it deals with the updates received from Betfair in exactly the same way as it would when the same updates information are received in a normal race. So the question shifts to what updates does Betfair provide for an abandoned race?
