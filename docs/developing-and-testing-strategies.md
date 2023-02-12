@@ -56,7 +56,7 @@
         ),
         market_projection=["MARKET_DESCRIPTION"],
         max_results=200,
-    )    
+    )
     print({result.description.market_type for result in results})
     ```
 
@@ -70,6 +70,20 @@
     The get_runner_context function needs three parameters to ensure that it returns a unique context: market_id, selection_id and handicap. The handicap is not the same as the weight handicap in a horse race or distance handicap in a greyhound race. rather it is the articial handicap added to asian handicap markets (e.g. Man United to win by more than one goal). So although it is zero for most market types, for asian handicaps we need to combibe the selection_id and handicap to identify a unique outcome.
 
     Simialarly there are other market types for which we can't rely on selection_id and (zero) handicap to uniquely identify the outcome. For example, draws in all soccer have the same selection_id, so we need to add the market_id to uniquely identify the specific outcome for which we want the runner context.
+
+??? question "How do I merge information from the Betfair market catalogue with the market data"
+    If you're using Flumine this will happen automatically if you're using a live stream i.e. for live or paper trading. But it doesn't happen immediately, rather it ca tale a minute or so before it appears. When it is available you will be able to access the catalogue object at market.market_catalogue.
+
+    If you're backtesting then the data will be available only if you collected it at the time of the event, which is usually done using the [marketrecorder](https://github.com/betcode-org/flumine/blob/master/examples/marketrecorder.py). You'll then need to tell Flumine where to find the catalogue file. This is done by creating a middleware file based on the [example in the Flumine repo](https://github.com/betcode-org/flumine/blob/master/examples/middleware/marketcatalogue.py), and then enabling it with:
+
+    ```python
+    framework.add_market_middleware(MarketCatalogueMiddleware())
+    ```
+
+??? question "In the blotter when I get ```live_orders```, is this across all strategies? And what is considered a live order?"
+    They are orders which have not been completed, voided or expiredin the market for all strategies. Most of the time this will mean that they are 'executable' (have ```OrderStatus.EXECUTABLE```), but they could be, briefly, ```PENDING```, ```CANCELLING```, ```REPLACING``` or ```UPDATING``` as well.
+    
+    This differs from the orders that are passed to the your strategy's ```process_orders``` method, which will receive all orders, irrespective of the status, but only for that specific strategy.
 
 ## Testing Strategies
 
