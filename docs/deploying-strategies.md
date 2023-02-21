@@ -12,6 +12,9 @@
 ??? question "What is conflate_ms used for when creating a strategy?"
     By default Betfair’s matching engine runs every 50 milliseconds and streams updates to subscribed channels. However, if you don’t want to receive them that frequently, you can set this parameter to a higher value. You might wish to do this if, for example, your strategy isn’t particularly time-sensitive, but each update requires substantial processing.
 
+??? question "I am about to put my new strategy live - how will I add new markets to the stream when they're opened?"
+    You can't. Instead, when defining your market filter, don't list specific markets, just describe the sort of markets you want to stream. Event types, market types and countries are good for this. Then when Betfair adds new markets to the exchange it will automatically add them to your stream if they satisfy your filters.
+
 ## Resources
 ??? question "Should I run a separate instance of Flumine for each of my strategies?"
     Usually no. Flumine is capable of automatically merging the streams needs for multiple strategies into a single subscription and then delivering the market updates needed for each strategy to those strategies alone. This makes the streaming more efficient.
