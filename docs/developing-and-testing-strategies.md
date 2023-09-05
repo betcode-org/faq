@@ -87,6 +87,12 @@
     
     This differs from the orders that are passed to the your strategy's ```process_orders``` method, which will receive all orders, irrespective of the status, but only for that specific strategy.
 
+??? question "I'd like my Strategy to perform some action when it stops (either because I stop the script manually with Ctrl+C but also in case of a bug). Where should I put this code?"
+    You should overwrite the [finish](https://github.com/betcode-org/flumine/blob/master/flumine/strategy/strategy.py#L154C13-L154C13) method, this method is called before flumine ends.
+
+??? question "How can I keep the state of my flumine Strategy after a restart?"
+    Take a look at the Middleware [orders.py](https://github.com/betcode-org/flumine/blob/master/examples/middleware/orders.py). It will add execution complete orders to the blotter, so the exposures you had will be correctly loaded after a restart of the same Strategy.
+
 ## Testing Strategies
 
 ??? question "How do I know if my strategy will be successful?"
