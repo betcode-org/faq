@@ -4,13 +4,13 @@
 ??? question "I’m about to run a new strategy live. What should I do to protect myself in case it goes horribly wrong?"
     Before running a new strategy live, it is recommended that you paper trade for a short period. Assuming you have backtested properly, it should work with similar results. However, it's a good way to uncover any environmental differences.
 
-    When you're ready to trade with real money, you may want to protect yourself by limiting the amount of funds in your account. One way to do this without actually withdrawing funds from Betfair, is to temporarily transfer any surplus from the account's "Main Wallet" to the "Exchange Games Wallet" where it can be parked until you are confident that the strategy won't run rampant.
+    When you're ready to trade with real money, you may want to protect yourself by limiting the amount of funds in your account. One way to do this without actually withdrawing funds from Betfair, is to temporarily transfer any surplus from the account's "Main Wallet" to the "Exchange Games Wallet" where it can be parked until you are confident that the new strategy won't run rampant.
 
 ??? question "Is there a way to force my strategy to process market books periodically, even when there’s no update within that period?"
     There is. You can set the streaming_timeout parameter for your strategy and it will force an update after the specified number of seconds.
 
 ??? question "What is conflate_ms used for when creating a strategy?"
-    By default Betfair’s matching engine runs every 50 milliseconds and streams updates to subscribed channels. However, if you don’t want to receive them that frequently, you can set this parameter to a higher value. You might wish to do this if, for example, your strategy isn’t particularly time-sensitive, but each update requires substantial processing.
+    By default Betfair’s matching engine runs every 50 milliseconds and streams updates to subscribed channels. However, if you don’t want to receive them that frequently, you can set this parameter to a higher value. You might wish to do this if, for example, your strategy isn’t particularly time-sensitive, but each update requires substantial processing, or because your stratey is callibrated to a longer timeframe.
 
 ??? question "I am about to put my new strategy live - how will I add new markets to the stream when they're opened?"
     You can't. Instead, when defining your market filter, don't list specific markets, just describe the sort of markets you want to stream. Event types, market types and countries are good for this. Then when Betfair adds new markets to the exchange it will automatically add them to your stream if they satisfy your filters.
@@ -19,10 +19,10 @@
 ??? question "Should I run a separate instance of Flumine for each of my strategies?"
     Usually no. Flumine is capable of automatically merging the streams needs for multiple strategies into a single subscription and then delivering the market updates needed for each strategy to those strategies alone. This makes the streaming more efficient.
 
-    Exceptions to this would be where the strategies are in different sports, or would result in subscribing to more markets that your Betfair limit per subscription.
+    Exceptions to this would be where the strategies are in different sports, or would result in subscribing to more markets that your Betfair subscription limit.
 
-??? question "Has anyone tried streaming using AWS or any other serverless? And any recommendations on the same?"
-    Don't do it. Serverless is priced per invocation of the code and you'll have a huge number of them. It's straightforward and much more cost effective to spin up a dedicated EC2 instance and run your code on there
+??? question "Has anyone tried streaming using AWS Lambda or any other serverless service? And any recommendations on the same?"
+    Don't do it. Serverless is priced per invocation of the code and you'll have a huge number of them. It's straightforward and much more cost effective to spin up a dedicated EC2 instance or VPS and run your code on there.
 
 ## Problems
 ??? question "I’m getting lots of log messages about latency. What do they mean and what should I do?"

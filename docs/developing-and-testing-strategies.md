@@ -5,10 +5,10 @@
 ??? question "What would be a profitable strategy for horse racing?"
     We will answer almost anything else about how to automate your betting, find strategies, and assess their profit potential. But we won't give you profitable strategies.
 
-    There's a good reason for this. Many of the channel's members make their living from betting in sports markets. But those markets are very dynamic and are constantly evolving. So when a strategy becomes public, markets evolve to remove the inefficiency that made it profitable. So the strategy that you're given would very probably no longer be profitable by the time you've implemented it and the person who gave it to you would have lost some of their income.
+    There's a good reason for this. Many of the channel's members make their living from betting in sports markets. But those markets are very dynamic and are constantly evolving. Consequently when the details of a successful strategy become public, markets evolve to remove the inefficiency that made it profitable. So the strategy that you're given would very probably no longer be profitable by the time you've implemented it, and the person who gave it to you would have lost some of their income.
 
 ??? question "Can you recommend a good book to help me deepen my understading of betting markets"
-    There are an awful lot of truly terrible books out there. Generally if they include "win money daily", "bet profitabily" or similar in the title - stay well away.
+    There are an awful lot of truly terrible books out there. Generally if they include "win money daily", "bet profitably" or the words "secret", "easy" or "guaranteed" in the title - stay well away.
 
     However there are also some very useful and interesting books. Though some are quite expensive, the following have been recommended by active bettors on our Slack channel:
 
@@ -64,17 +64,18 @@
 
 ??? question "How does Flumine handle abandoned events?"
     This isn't something that Flumine handles explicitly. Rather it deals with the updates received from Betfair in exactly the same way as it would when the same updates information are received in a normal race. So the question shifts to what updates does Betfair provide for an abandoned race?
-    The answer is that it first suspends the affected markets, and sets all the available ladder volumes to zero, Then it removes all the runners and closes the markets. There's no explicit "abandoned" status or reason given for closing each market.
+
+    The answer is that Betfair first suspends the affected markets, and sets all the available ladder volumes to zero, Then it removes all the runners and closes the markets. There's no explicit "abandoned" status or reason given for closing each market.
 
     It will also cancel all the orders on the affected markets, which Flumine will detect in the order stream if you have that running (i.e. haven't overriden the default).
 
 ??? question "Why does the get_runner_context function require the runner handicap when it's always zero?"
-    The get_runner_context function needs three parameters to ensure that it returns a unique context: market_id, selection_id and handicap. The handicap is not the same as the weight handicap in a horse race or distance handicap in a greyhound race. rather it is the articial handicap added to asian handicap markets (e.g. Man United to win by more than one goal). So although it is zero for most market types, for asian handicaps we need to combibe the selection_id and handicap to identify a unique outcome.
+    The get_runner_context function needs three parameters to ensure that it returns a unique context: market_id, selection_id and handicap. The handicap is not the same as the weight handicap in a horse race or distance handicap in a greyhound race. rather it is the articial handicap added to asian handicap markets (e.g. Man United to win by more than one goal). So although it is zero for most market types, for asian handicaps we need to combine the selection_id and handicap to identify a unique outcome.
 
-    Simialarly there are other market types for which we can't rely on selection_id and (zero) handicap to uniquely identify the outcome. For example, draws in all soccer have the same selection_id, so we need to add the market_id to uniquely identify the specific outcome for which we want the runner context.
+    Similarly there are other market types for which we can't rely on selection_id and (zero) handicap to uniquely identify the outcome. For example, draws in all soccer have the same selection_id, so we need to add the market_id to uniquely identify the specific outcome for which we want the runner context.
 
 ??? question "How do I merge information from the Betfair market catalogue with the market data"
-    If you're using Flumine this will happen automatically if you're using a live stream i.e. for live or paper trading. But it doesn't happen immediately, rather it ca tale a minute or so before it appears. When it is available you will be able to access the catalogue object at market.market_catalogue.
+    If you're using Flumine this will happen automatically if you're using a live stream i.e. for live or paper trading. But it doesn't happen immediately, rather it can tale a minute or so before it appears. When it is available you will be able to access the catalogue object at market.market_catalogue.
 
     If you're backtesting then the data will be available only if you collected it at the time of the event, which is usually done using the [marketrecorder](https://github.com/betcode-org/flumine/blob/master/examples/marketrecorder.py). You'll then need to tell Flumine where to find the catalogue file. This is done by creating a middleware file based on the [example in the Flumine repo](https://github.com/betcode-org/flumine/blob/master/examples/middleware/marketcatalogue.py), and then enabling it with:
 
@@ -82,8 +83,8 @@
     framework.add_market_middleware(MarketCatalogueMiddleware())
     ```
 
-??? question "In the blotter when I get ```live_orders```, is this across all strategies? And what is considered a live order?"
-    They are orders which have not been completed, voided or expiredin the market for all strategies. Most of the time this will mean that they are 'executable' (have ```OrderStatus.EXECUTABLE```), but they could be, briefly, ```PENDING```, ```CANCELLING```, ```REPLACING``` or ```UPDATING``` as well.
+??? question "In the market blotter when I get ```live_orders```, is this across all strategies? And what is considered a live order?"
+    They are orders which have not been completed, voided or expired in the specific market for all strategies. Most of the time this will mean that they are 'executable' (i.e. have ```OrderStatus.EXECUTABLE```), but they could be, briefly, ```PENDING```, ```CANCELLING```, ```REPLACING``` or ```UPDATING``` as well.
     
     This differs from the orders that are passed to the your strategy's ```process_orders``` method, which will receive all orders, irrespective of the status, but only for that specific strategy.
 
@@ -103,9 +104,9 @@
     To evaluate the results you would look at two things. Did it generate profits and did you have an adequate sample size to have confidence in those profits. Successful sports bettors may work with profits as low as 1-3% return on investment after commission has been deducted. There will be winning streaks and losing streaks, but provided you have a large enough sample these will even out over time. A typical sample size should certainly cover multiple months and for sports such as racing and soccer, thousands of markets.
 
 ??? question "How do I compare each-way prices with win and place markets when backtesting in Flumine?"
-    When backtesting strategies, Flumine by default streams each market in turn delivering the price updates for that market before moving on to the next one. This is different to what would happen when running live when updates are received for multiple markets at the same time.
+    When backtesting strategies, Flumine by default streams each market in turn delivering the price updates for that market before moving on to the next one. This is different to what would happen when running live when updates are received for all markets in time order.
 
-    The real-world situation can be replicated however by activating event processing. This will merge the updates for a given event and deliver them in the order that they originally occurred, and can be enabled as follows:
+    The real-world situation can be partially replicated however by activating event processing. This will merge the updates for a given event and deliver them in the order that they originally occurred. It can be enabled as follows:
 
     ``` python
     strategy = ExampleStrategy(
@@ -117,4 +118,4 @@
 
     ```win_market = market.event["WIN"][0]``` (a list of market objects of the requested type is returned)
 
-    This will also work for other sports when an event has multiple markets, however, sadly, it won't work for greyhound races.
+    This will also work for other sports when an event has multiple markets, however, sadly, it won't work for the forecast market in greyhound races or for markets that are added with a different event ID in other sports.
