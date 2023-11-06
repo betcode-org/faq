@@ -45,4 +45,4 @@
 ??? question "I have a question that's not addressed here. From where can I get further help?"
     If you haven't already, it's certainly worth diving into the more [advanced topics in the documentation](https://betcode-org.github.io/flumine/clients/).
 
-    If you still have questions, then the betcode community hangs out on [Slack](https://join.slack.com/t/betcode-org/shared_invite/zt-h0ato238-PPbfU_T7Ji0ORjz0ESIJkg).
+    If you still have questions, then the betcode community hangs out on [Slack](https://join.slack.com/t/betcode-org/shared_invite/zt-25yz6dt1y-LHya5VzHLOzN3RZEQrSnrA).

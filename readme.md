@@ -6,7 +6,7 @@
 
 # betcode FAQ
 
-This is FAQ draws from and supplements the discussions that take place in the Betcode Slack channel.
+This is FAQ draws from and supplements the discussions that take place in the [Betcode Slack channel](https://join.slack.com/t/betcode-org/shared_invite/zt-25yz6dt1y-LHya5VzHLOzN3RZEQrSnrA).
 
 [github pages](https://betcode-org.github.io/faq/)
 
