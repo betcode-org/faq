@@ -1,0 +1,552 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="FAQ for betcode open-source packages and sports trading generally">
+      
+      
+      
+      
+        <link rel="prev" href="../using-data/">
+      
+      
+        <link rel="next" href="../deploying-strategies/">
+      
+      
+      <link rel="icon" href="../img/logo.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.2.7">
+    
+    
+      
+        <title>Developing Strategies - betcode FAQ</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.046329b4.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.85d0ee34.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../styles/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="green" data-md-color-accent="indigo">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#developing-and-testing-strategies" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="betcode FAQ" class="md-header__button md-logo" aria-label="betcode FAQ" data-md-component="logo">
+      
+  <img src="../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            betcode FAQ
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Developing Strategies
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="betcode FAQ" class="md-nav__button md-logo" aria-label="betcode FAQ" data-md-component="logo">
+      
+  <img src="../img/logo.png" alt="logo">
+
+    </a>
+    betcode FAQ
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Getting Started
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../using-data/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Using Data
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Developing Strategies
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Developing Strategies
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#finding-strategies" class="md-nav__link">
+    Finding Strategies
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implementing-strategies" class="md-nav__link">
+    Implementing Strategies
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing-strategies" class="md-nav__link">
+    Testing Strategies
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deploying-strategies/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Deploying
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#finding-strategies" class="md-nav__link">
+    Finding Strategies
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implementing-strategies" class="md-nav__link">
+    Implementing Strategies
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing-strategies" class="md-nav__link">
+    Testing Strategies
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="developing-and-testing-strategies">Developing and Testing Strategies</h1>
+<h2 id="finding-strategies">Finding Strategies</h2>
+<details class="question">
+<summary>What would be a profitable strategy for horse racing?</summary>
+<p>We will answer almost anything else about how to automate your betting, find strategies, and assess their profit potential. But we won't give you profitable strategies.</p>
+<p>There's a good reason for this. Many of the channel's members make their living from betting in sports markets. But those markets are very dynamic and are constantly evolving. Consequently when the details of a successful strategy become public, markets evolve to remove the inefficiency that made it profitable. So the strategy that you're given would very probably no longer be profitable by the time you've implemented it, and the person who gave it to you would have lost some of their income.</p>
+</details>
+<details class="question">
+<summary>Can you recommend a good book to help me deepen my understading of betting markets</summary>
+<p>There are an awful lot of truly terrible books out there. Generally if they include "win money daily", "bet profitably" or the words "secret", "easy" or "guaranteed" in the title - stay well away.</p>
+<p>However there are also some very useful and interesting books. Though some are quite expensive, the following have been recommended by active bettors on our Slack channel:</p>
+<ul>
+<li><a href="https://www.amazon.co.uk/Logic-Sports-Betting-Ed-Miller/dp/1096805723">The Logic of Sports Betting</a></li>
+<li><a href="https://www.amazon.co.uk/Trading-Bases-Fortune-Betting-Baseball/dp/0451415175">Trading Bases</a></li>
+<li><a href="https://www.amazon.co.uk/Statistical-Sports-Models-Excel-Andrew/dp/1079013458">Statistical Sports Models in Excel</a></li>
+<li><a href="https://www.amazon.co.uk/Precision-Statistical-Mathematical-Methods-Racing/dp/1432768522">Precision: Statistical and Mathematical Methods in Horse Racing</a></li>
+<li><a href="https://www.amazon.co.uk/Efficiency-Racetrack-Scientific-Financial-Economics/dp/981320351X">Efficiency of Racetrack Betting Markets</a></li>
+<li><a href="https://www.amazon.co.uk/Kelly-Capital-Growth-Investment-Criterion/dp/9814383139">The Kelly Capital Growth Investment Criterion: Theory and Practice</a></li>
+<li><a href="https://www.amazon.co.uk/Man-All-Markets-Beating-Street/dp/1786071975">A Man for All Markets: Beating the Odds, from Las Vegas to Wall Street</a></li>
+<li><a href="https://www.amazon.co.uk/Soccernomics-France-Germany-England-Starting/dp/0008559627">Soccernomics</a></li>
+<li><a href="https://www.amazon.co.uk/Signal-Noise-Art-Science-Prediction/dp/0141975652">The Signal and the Noise: The Art and Science of Prediction</a></li>
+<li><a href="https://www.amazon.co.uk/Precision-Statistical-Mathematical-Methods-Racing/dp/1432768522">Precision: Statistical Mathematical Methods in Horse Racing</a></li>
+<li><a href="https://www.amazon.co.uk/Beyer-Speed-Strategies-Racetrack-Betting/dp/0618871721">Beyer on Speed: New Strategies for Racetrack Betting</a></li>
+<li><a href="https://www.amazon.co.uk/Beyond-Odds-Efficient-Market-Warfare/dp/B0D8Y47QG2">Beyond the Odds: Efficient Market Theory and Tools of Warfare for the Modern Sports Bettor</a></li>
+</ul>
+</details>
+<details class="question">
+<summary>What’s the difference between technical indicators and fundamentals and what do people here use?</summary>
+<p>Technical indicators are extracted from what's happening in a betting market, such as prices, trading volumes matched per runner, amounts available to back or lay, when liquidity arrives in the market, etc. fundamentals ignore what's happening in the market and focus on real world data - how well has that horse been running recently? what's that teams form like? which dog runs best when it's raining? and so on ...</p>
+<p>This channel has members with clear preferences for one or the other and many will use both, either for different strategies or by "stacking" them in the same strategy.</p>
+<p>In general, it's easier to work with technical indicators, but if you have a good understanding of the key factors for the sport in which you'll be betting, fundamentals may offer better opportunities.</p>
+</details>
+<details class="question">
+<summary>Can AI/ML help with developing betting strategies?</summary>
+<p>Opinions here are mixed. There are members who run successful strategies with just a few "if" statements. On the other hand we have huge amounts of data available to us and for some that's a natural opportunity to use ML approaches leading to AI models.</p>
+<p>If the latter appeals to you, go for it, but with care. Sports data is very noisy and it's incredibly easy to mine opportunities that aren't real, so ensure that you know how to avoid overfitting your models and properly evaluating their accuracy.</p>
+</details>
+<details class="question">
+<summary>Where can I find a list of all possible Betfair market types for my favourite sport?</summary>
+<p>Sadly there's no foolproof way to do this. Different events of the same type will typically have a core set of markets, but popular events may have others added if Betfair believes that there will be sufficient interest amongst bettors. Some of these additional markets may be quite specific and appear infrequently.</p>
+<p>To get an idea of the specific market types available currently for, say, Ice Hockey, you could run a small script like this:</p>
+<div class="highlight"><pre><span></span><code><span class="n">results</span> <span class="o">=</span> <span class="n">trading</span><span class="o">.</span><span class="n">betting</span><span class="o">.</span><span class="n">list_market_catalogue</span><span class="p">(</span>
+    <span class="nb">filter</span><span class="o">=</span><span class="n">betfairlightweight</span><span class="o">.</span><span class="n">filters</span><span class="o">.</span><span class="n">market_filter</span><span class="p">(</span>
+        <span class="n">event_type_ids</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;7524&quot;</span><span class="p">],</span>  <span class="c1"># ice hockey</span>
+    <span class="p">),</span>
+    <span class="n">market_projection</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;MARKET_DESCRIPTION&quot;</span><span class="p">],</span>
+    <span class="n">max_results</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">({</span><span class="n">result</span><span class="o">.</span><span class="n">description</span><span class="o">.</span><span class="n">market_type</span> <span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">results</span><span class="p">})</span>
+</code></pre></div>
+</details>
+<h2 id="implementing-strategies">Implementing Strategies</h2>
+<details class="question">
+<summary>I’ve been trading manually for a while and want to automate my strategies. How do I start?</summary>
+<p>You will want to take advantage of the Flumine trading framework. For an easy to understand introduction to how strategies are structured in Flumine, take a look at the <a href="https://github.com/betcode-org/flumine/blob/master/examples/strategies/lowestlayer.py">lowest layer strategy</a> in the flumine examples folder.</p>
+</details>
+<details class="question">
+<summary>When should I use middleware or a worker?</summary>
+<p>Middleware is run each time there's a market update immediately before that update is delivered to your strategy, so it is extra processing that will add to your strategy's execution time. Workers run on a different thread at a frequency that you set when you initiate them, so should have minimal, if any, impact on your strategy's execution.</p>
+<p>So if you want to change or extend the market information, for example by calculating a technical indicator from the updated market data, then you would probably want to use middelware. However, if you were periodically making calls to an external API, to obtain match statistics for example, you would most likely want to do this in parallel to your strategy execution and so would use a worker.</p>
+<p>One exception would be when backtesting. The simulator works by patching the system clock to the time the event was taking place, as it's rather difficult to keep patched times in sync on different processors, workers don't play nicely with backtesting and you will need to use middleware to achieve accurate results.</p>
+</details>
+<details class="question">
+<summary>How does Flumine handle abandoned events?</summary>
+<p>This isn't something that Flumine handles explicitly. Rather it deals with the updates received from Betfair in exactly the same way as it would when the same updates information are received in a normal race. So the question shifts to what updates does Betfair provide for an abandoned race?</p>
+<p>The answer is that Betfair first suspends the affected markets, and sets all the available ladder volumes to zero, Then it removes all the runners and closes the markets. There's no explicit "abandoned" status or reason given for closing each market.</p>
+<p>It will also cancel all the orders on the affected markets, which Flumine will detect in the order stream if you have that running (i.e. haven't overriden the default).</p>
+</details>
+<details class="question">
+<summary>Why does the get_runner_context function require the runner handicap when it's always zero?</summary>
+<p>The get_runner_context function needs three parameters to ensure that it returns a unique context: market_id, selection_id and handicap. The handicap is not the same as the weight handicap in a horse race or distance handicap in a greyhound race. rather it is the articial handicap added to asian handicap markets (e.g. Man United to win by more than one goal). So although it is zero for most market types, for asian handicaps we need to combine the selection_id and handicap to identify a unique outcome.</p>
+<p>Similarly there are other market types for which we can't rely on selection_id and (zero) handicap to uniquely identify the outcome. For example, draws in all soccer have the same selection_id, so we need to add the market_id to uniquely identify the specific outcome for which we want the runner context.</p>
+</details>
+<details class="question">
+<summary>How do I merge information from the Betfair market catalogue with the market data</summary>
+<p>If you're using Flumine this will happen automatically if you're using a live stream i.e. for live or paper trading. But it doesn't happen immediately, rather it can tale a minute or so before it appears. When it is available you will be able to access the catalogue object at market.market_catalogue.</p>
+<p>If you're backtesting then the data will be available only if you collected it at the time of the event, which is usually done using the <a href="https://github.com/betcode-org/flumine/blob/master/examples/marketrecorder.py">marketrecorder</a>. You'll then need to tell Flumine where to find the catalogue file. This is done by creating a middleware file based on the <a href="https://github.com/betcode-org/flumine/blob/master/examples/middleware/marketcatalogue.py">example in the Flumine repo</a>, and then enabling it with:</p>
+<div class="highlight"><pre><span></span><code><span class="n">framework</span><span class="o">.</span><span class="n">add_market_middleware</span><span class="p">(</span><span class="n">MarketCatalogueMiddleware</span><span class="p">())</span>
+</code></pre></div>
+</details>
+<details class="question">
+<summary>In the market blotter when I get <code>live_orders</code>, is this across all strategies? And what is considered a live order?</summary>
+<p>They are orders which have not been completed, voided or expired in the specific market for all strategies. Most of the time this will mean that they are 'executable' (i.e. have <code>OrderStatus.EXECUTABLE</code>), but they could be, briefly, <code>PENDING</code>, <code>CANCELLING</code>, <code>REPLACING</code> or <code>UPDATING</code> as well.</p>
+<p>This differs from the orders that are passed to the your strategy's <code>process_orders</code> method, which will receive all orders, irrespective of the status, but only for that specific strategy.</p>
+</details>
+<details class="question">
+<summary>I'd like my Strategy to perform some action when it stops (either because I stop the script manually with Ctrl+C but also in case of a bug). Where should I put this code?</summary>
+<p>You should overwrite the <a href="https://github.com/betcode-org/flumine/blob/master/flumine/strategy/strategy.py#L154C13-L154C13">finish</a> method, this method is called before flumine ends.</p>
+</details>
+<details class="question">
+<summary>How can I keep the state of my flumine Strategy after a restart?</summary>
+<p>Take a look at the Middleware <a href="https://github.com/betcode-org/flumine/blob/master/examples/middleware/orders.py">orders.py</a>. It will add execution complete orders to the blotter, so the exposures you had will be correctly loaded after a restart of the same Strategy.</p>
+</details>
+<h2 id="testing-strategies">Testing Strategies</h2>
+<details class="question">
+<summary>How do I know if my strategy will be successful?</summary>
+<p>Ah. if only there was an easy answer to this question. But there are some steps that you can take to be confident that it will be, or to avoid losing money if it won't.</p>
+<p>Every new strategy should be extensively backtested. This means running it against historical data. Flumine can make this easy for you as it's usually possible to code a strategy as it will be if you take it live and instead pass it a list of historical markets for which you have data to run it against those instead and then evaluate the results.</p>
+<p>To evaluate the results you would look at two things. Did it generate profits and did you have an adequate sample size to have confidence in those profits. Successful sports bettors may work with profits as low as 1-3% return on investment after commission has been deducted. There will be winning streaks and losing streaks, but provided you have a large enough sample these will even out over time. A typical sample size should certainly cover multiple months and for sports such as racing and soccer, thousands of markets.</p>
+</details>
+<details class="question">
+<summary>How do I compare each-way prices with win and place markets when backtesting in Flumine?</summary>
+<p>When backtesting strategies, Flumine by default streams each market in turn delivering the price updates for that market before moving on to the next one. This is different to what would happen when running live when updates are received for all markets in time order.</p>
+<p>The real-world situation can be partially replicated however by activating event processing. This will merge the updates for a given event and deliver them in the order that they originally occurred. It can be enabled as follows:</p>
+<div class="highlight"><pre><span></span><code><span class="n">strategy</span> <span class="o">=</span> <span class="n">ExampleStrategy</span><span class="p">(</span>
+    <span class="n">market_filter</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;markets&quot;</span><span class="p">:</span> <span class="p">[</span><span class="o">..</span><span class="p">],</span> <span class="s2">&quot;event_processing&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">}</span>
+<span class="p">)</span>
+</code></pre></div>
+<p>Each market in an event is then made available to the others e.g.</p>
+<p><code>win_market = market.event["WIN"][0]</code> (a list of market objects of the requested type is returned)</p>
+<p>This will also work for other sports when an event has multiple markets, however, sadly, it won't work for the forecast market in greyhound races or for markets that are added with a different event ID in other sports.</p>
+</details>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.dff1b7c8.min.js"></script>
+      
+    
+  </body>
+</html>
