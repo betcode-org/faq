@@ -21,6 +21,10 @@
     * [A Man for All Markets: Beating the Odds, from Las Vegas to Wall Street](https://www.amazon.co.uk/Man-All-Markets-Beating-Street/dp/1786071975)
     * [Soccernomics](https://www.amazon.co.uk/Soccernomics-France-Germany-England-Starting/dp/0008559627)
     * [The Signal and the Noise: The Art and Science of Prediction](https://www.amazon.co.uk/Signal-Noise-Art-Science-Prediction/dp/0141975652)
+    * [Precision: Statistical Mathematical Methods in Horse Racing](https://www.amazon.co.uk/Precision-Statistical-Mathematical-Methods-Racing/dp/1432768522)
+    * [Beyer on Speed: New Strategies for Racetrack Betting](https://www.amazon.co.uk/Beyer-Speed-Strategies-Racetrack-Betting/dp/0618871721)
+    * [Beyond the Odds: Efficient Market Theory and Tools of Warfare for the Modern Sports Bettor](https://www.amazon.co.uk/Beyond-Odds-Efficient-Market-Warfare/dp/B0D8Y47QG2)
+
 
 ??? question "What’s the difference between technical indicators and fundamentals and what do people here use?"
     Technical indicators are extracted from what's happening in a betting market, such as prices, trading volumes matched per runner, amounts available to back or lay, when liquidity arrives in the market, etc. fundamentals ignore what's happening in the market and focus on real world data - how well has that horse been running recently? what's that teams form like? which dog runs best when it's raining? and so on ...
