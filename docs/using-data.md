@@ -49,3 +49,8 @@
 
     These mappings may be created manually or programmatically by using a combination of event matching and fuzzy text matching. So for example, by matching all soccer teams in the same league, or all the horses in the same race, you will usually be left with only a very small number that don't match easily.
     Although not a direct answer to your question, you may also find these [Betfair mappings](https://github.com/mberk/betfairmappings) helpful.
+
+??? question "How do I get third-party data, such as bookmaker prices, into a Flumine strategy?"
+    One way is to poll the provider's API from a `BackgroundWorker` and put each new response on `flumine.handler_queue` as a `CustomEvent`. Flumine runs the event's callback on its main thread, where your strategy runs too, so no locks are needed. Flumine's [in-play service worker](https://github.com/betcode-org/flumine/blob/master/examples/workers/inplayservice.py) does this with Betfair's scores. This is for live and paper trading only: workers don't play nicely with backtesting, where you'd use middleware instead.
+
+    For a third-party source, [this example](https://github.com/oddsrelay/examples/tree/main/flumine-bookmaker-prices) does the same with UK and Irish bookmakers' win prices for horse racing from a paid odds API, matching each race to its Betfair market by start time and each runner by name.
